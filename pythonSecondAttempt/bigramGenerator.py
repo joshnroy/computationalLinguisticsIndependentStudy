@@ -1,5 +1,5 @@
 # Declare input text file
-textfile = "data.txt"
+textfile = "furniture.txt"
 
 # Create a dictionary to store bigrams
 Bigrams = {}
