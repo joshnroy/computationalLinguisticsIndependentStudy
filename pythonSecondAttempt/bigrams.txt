@@ -1,0 +1,17 @@
+1	my program
+11	hello hello
+1	program hello
+1	World! This
+1	test test
+1	is a
+1	generating program
+1	unigram generating
+1	hello world
+1	Hello World!
+1	world test
+1	START Hello
+2	test for
+1	This is
+1	a test
+1	my unigram
+2	for my
