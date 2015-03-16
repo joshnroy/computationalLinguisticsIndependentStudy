@@ -1,4 +1,4 @@
-# Conative Linguistics Independent Study
+# Cognative Linguistics Independent Study
 
 Josh Roy
 
