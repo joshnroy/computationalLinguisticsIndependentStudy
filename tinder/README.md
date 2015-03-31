@@ -19,3 +19,7 @@ Tinder happens to be a very fruitful place to find casual conversation. In addit
 # Parts
 1. Python
 2. [MongoDB](https://api.mongodb.org/python/current/)
+
+# Things to Consider
+1. Maybe only record the speech patterns from one gender?
+2. Maybe use one gender to learn and one to test?
