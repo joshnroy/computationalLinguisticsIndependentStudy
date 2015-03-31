@@ -16,4 +16,6 @@ Tinder happens to be a very fruitful place to find casual conversation. In addit
 8. Assign/correct values on each response based on the ranking of the conversation
 
 
-
+# Parts
+Python
+[MongoDB](https://api.mongodb.org/python/current/)
