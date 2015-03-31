@@ -7,8 +7,11 @@ Tinder happens to be a very fruitful place to find casual conversation. In addit
 # How it Works
 ## General Step Through Process
 1. Automatically like all of the profiles (male and female) within a certain area Probably a very large area. 100 miles or more as the system alllows.
+
 The following steps are done for each match
+
 2. Obtain a match
-3. Randomly pick from a list (probably in a database) a starter message. 
+3. Randomly pick from a list (probably in a database) a starter message 
+4. 
 
 
