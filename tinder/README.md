@@ -17,5 +17,5 @@ Tinder happens to be a very fruitful place to find casual conversation. In addit
 
 
 # Parts
-Python
-[MongoDB](https://api.mongodb.org/python/current/)
+1. Python
+2. [MongoDB](https://api.mongodb.org/python/current/)
