@@ -15,6 +15,9 @@ Tinder happens to be a very fruitful place to find casual conversation. In addit
 7. After the conversation is decided to be finished, rank how well the conversation went based on how many messages it went on for.
 8. Assign/correct values on each response based on the ranking of the conversation
 
+## Training
+Creates the weighted list from a series of conversations taken from my imessage account 
+
 
 # Parts
 1. Python
