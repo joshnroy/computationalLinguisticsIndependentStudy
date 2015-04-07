@@ -7,7 +7,9 @@ db = client['tinderBot']
 
 names = db['names']
 
-with open ('names.txt') as f:
-    for line in f:
-        name = {"name": line}
-        names.insert(name)
+messages = db['messages']
+
+for message in messages.find():
+    for name in names.find():
+        message['message'] = message['message'].replace(name['name'], "", 100)
+    messages.save(message)
