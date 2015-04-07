@@ -5,7 +5,7 @@ from nltk.tree import *
 from nltk.draw import tree
 
 client = MongoClient()
-db = client['messages']
+db = client['tinderBot']
 
 messages = db['messages']
 
