@@ -1,6 +1,6 @@
-import pymongo, nltk
+import pymongo, nltk, sys, os, stat_parser
 from pymongo import MongoClient
-from collections import defaultdict
+from stat_parser import Parser, display_tree
 
 # Setting up the database stuff
 client = MongoClient()
@@ -11,18 +11,22 @@ names = db['names']
 
 messages = db['messages']
 
-# Getting name of the learning corpus
-learningCorpusName = input("What is the name of the learning corpus? (make sure it is in the directory that you are running this program from): ")
+pronounVerbPhrases = db['pronounVerbPhrases']
+learningCorpusName = sys.argv[1]
 
 # Opening the learning corpus
 with open(learningCorpusName) as f:
-    learningCorpus = f.read().replace('\n', '')
+    learningCorpus = f.read().replace('\n', ' ').decode('utf-8')
 
-# Split into sentences
-    counts = defaultdict(int)
-    sentences = nltk.tokenize.sent_tokenize(learningCorpus.decode('utf-8'))
+# Do the processing
+#    parser = stanford.StanfordParser(model_path="/Users/josh/Documents/Workspace/computationalLinguisticsIndependentStudy/tinder/program/stanford/stanford-raw/stanford-parser-3.5.1-models/edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz")
+    sent_detector = nltk.data.load('tokenizers/punkt/english.pickle')
+#    parser = nltk.ChartParser(grammar)
+    sentences = sent_detector.tokenize(learningCorpus.strip())
+    parser = Parser()
     for sentence in sentences:
-        tagged = nltk.pos_tag(nltk.tokenize.word_tokenize(sentence))
-        for word, tag in tagged:
-            counts[tag] += 1
-    print sorted(counts)
+        try:
+            tree = parser.parse(sentence)
+            display_tree(tree) 
+        except TypeError:
+            pass
