@@ -19,9 +19,7 @@ with open(learningCorpusName) as f:
     learningCorpus = f.read().replace('\n', ' ').decode('utf-8')
 
 # Do the processing
-#    parser = stanford.StanfordParser(model_path="/Users/josh/Documents/Workspace/computationalLinguisticsIndependentStudy/tinder/program/stanford/stanford-raw/stanford-parser-3.5.1-models/edu/stanford/nlp/models/lexparser/englishPCFG.ser.gz")
     sent_detector = nltk.data.load('tokenizers/punkt/english.pickle')
-#    parser = nltk.ChartParser(grammar)
     sentences = sent_detector.tokenize(learningCorpus.strip())
     parser = Parser()
     for sentence in sentences:
