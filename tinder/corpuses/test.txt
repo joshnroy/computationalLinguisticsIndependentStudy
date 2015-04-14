@@ -1,0 +1,584 @@
+{'verb': u'happened', 'pronoun': 'it'}
+{'verb': u'are', 'pronoun': 'they'}
+{'verb': u'are', 'pronoun': 'they'}
+{'verb': u'have', 'pronoun': u'I'}
+{'verb': u'killed', 'pronoun': 'it'}
+{'verb': u'looked', 'pronoun': u'it'}
+{'verb': u'has', 'pronoun': 'it'}
+{'verb': u'meal', 'pronoun': 'it'}
+{'verb': u'went', 'pronoun': u'I'}
+{'verb': u'buddy', 'pronoun': 'it'}
+{'verb': u'had been locked', 'pronoun': 'they'}
+{'verb': u'had been locked', 'pronoun': 'they'}
+{'verb': u'had been locked', 'pronoun': 'they'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'live', 'pronoun': u'it'}
+{'verb': u'was', 'pronoun': u'it'}
+{'verb': u'was', 'pronoun': u'it'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'were', 'pronoun': 'they'}
+{'verb': u'had', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'was incinerated', 'pronoun': 'it'}
+{'verb': u'was incinerated', 'pronoun': 'it'}
+{'verb': u"O'Hare", 'pronoun': 'it'}
+{'verb': u'said', 'pronoun': u'it'}
+{'verb': u'said', 'pronoun': u'it'}
+{'verb': u'meet', 'pronoun': 'they'}
+{'verb': u'meet', 'pronoun': 'they'}
+{'verb': u'had seen seen', 'pronoun': u'I'}
+{'verb': u'had seen seen', 'pronoun': u'I'}
+{'verb': u'had seen seen', 'pronoun': u'I'}
+{'verb': u'had seen seen', 'pronoun': u'I'}
+{'verb': u'be', 'pronoun': u'it'}
+{'verb': u'be', 'pronoun': u'it'}
+{'verb': u'make', 'pronoun': u'me'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'came', 'pronoun': 'they'}
+{'verb': u'make', 'pronoun': u'them'}
+{'verb': u'become', 'pronoun': u'I'}
+{'verb': u'become', 'pronoun': u'I'}
+{'verb': u'am reminded', 'pronoun': u'I'}
+{'verb': u'am reminded', 'pronoun': u'I'}
+{'verb': u'am reminded', 'pronoun': u'I'}
+{'verb': u'was soliloquized soliloquized', 'pronoun': 'it'}
+{'verb': u'took', 'pronoun': 'they'}
+{'verb': u'ruined', 'pronoun': u'you'}
+{'verb': u'pee', 'pronoun': u'you'}
+{'verb': u"'m reminded reminded", 'pronoun': u'I'}
+{'verb': u'is', 'pronoun': 'it'}
+{'verb': u'work', 'pronoun': u'I'}
+{'verb': u'work', 'pronoun': u'I'}
+{'verb': u'walk', 'pronoun': u'I'}
+{'verb': u'walk', 'pronoun': u'I'}
+{'verb': u'say', 'pronoun': u'They'}
+{'verb': u'say', 'pronoun': u'I'}
+{'verb': u'is', 'pronoun': 'it'}
+{'verb': u'infinity', 'pronoun': u'I'}
+{'verb': u"'ve replied", 'pronoun': u'I'}
+{'verb': u"'ve replied", 'pronoun': u'I'}
+{'verb': u"'ve replied", 'pronoun': u'I'}
+{'verb': u'said', 'pronoun': u'I'}
+{'verb': u'raised inquired inquired', 'pronoun': 'it'}
+{'verb': u"'re", 'pronoun': 'they'}
+{'verb': u'stop', 'pronoun': u'they'}
+{'verb': u'stop', 'pronoun': u'they'}
+{'verb': u'keep', 'pronoun': 'it'}
+{'verb': u'plain', 'pronoun': 'it'}
+{'verb': u'see', 'pronoun': u'him'}
+{'verb': u'see', 'pronoun': u'him'}
+{'verb': u'privates', 'pronoun': u'we'}
+{'verb': u'make', 'pronoun': u'we'}
+{'verb': u'quite', 'pronoun': u'we'}
+{'verb': u'have', 'pronoun': u'I'}
+{'verb': u'drive', 'pronoun': 'they'}
+{'verb': u'ask', 'pronoun': u'I'}
+{'verb': u'have', 'pronoun': 'they'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'said', 'pronoun': u'I'}
+{'verb': u"'m", 'pronoun': 'they'}
+{'verb': u'help', 'pronoun': 'it'}
+{'verb': u'talk', 'pronoun': 'they'}
+{'verb': u'talk', 'pronoun': 'they'}
+{'verb': u'talk', 'pronoun': 'they'}
+{'verb': u'think', 'pronoun': 'they'}
+{'verb': u'be', 'pronoun': 'it'}
+{'verb': u'said', 'pronoun': u'I'}
+{'verb': u'burned', 'pronoun': 'it'}
+{'verb': u'are killed killed', 'pronoun': 'they'}
+{'verb': u'is arrested', 'pronoun': 'it'}
+{'verb': u"'s given", 'pronoun': 'it'}
+{'verb': u"'s shot", 'pronoun': 'it'}
+{'verb': u"'s shot", 'pronoun': 'it'}
+{'verb': u'come', 'pronoun': 'it'}
+{'verb': u'said', 'pronoun': 'it'}
+{'verb': u'had outlined', 'pronoun': 'they'}
+{'verb': u'made', 'pronoun': u'I'}
+{'verb': u'was', 'pronoun': u'one'}
+{'verb': u'used', 'pronoun': u'I'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'stopped represented', 'pronoun': 'it'}
+{'verb': u'was represented', 'pronoun': 'it'}
+{'verb': u'came', 'pronoun': u'it'}
+{'verb': u'was', 'pronoun': 'they'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'were formed', 'pronoun': u'we'}
+{'verb': u'stop', 'pronoun': u'us'}
+{'verb': u'stop', 'pronoun': u'us'}
+{'verb': u'were', 'pronoun': 'they'}
+{'verb': u'guarded', 'pronoun': 'they'}
+{'verb': u'climbed', 'pronoun': u'I'}
+{'verb': u'have', 'pronoun': 'it'}
+{'verb': u'had', 'pronoun': u'I'}
+{'verb': u'do', 'pronoun': 'it'}
+{'verb': u'had', 'pronoun': 'it'}
+{'verb': u'had taken', 'pronoun': 'they'}
+{'verb': u'had taken', 'pronoun': 'they'}
+{'verb': u'had', 'pronoun': 'it'}
+{'verb': u'had taken', 'pronoun': 'they'}
+{'verb': u'had taken', 'pronoun': 'they'}
+{'verb': u'had', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'roll', 'pronoun': 'they'}
+{'verb': u'roll', 'pronoun': 'they'}
+{'verb': u'bounce', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': u'I'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'trust', 'pronoun': u'me'}
+{'verb': u'caught', 'pronoun': 'it'}
+{'verb': u'opened', 'pronoun': 'it'}
+{'verb': u'said', 'pronoun': 'it'}
+{'verb': u'flown', 'pronoun': u'we'}
+{'verb': u'were covered covered', 'pronoun': u'we'}
+{'verb': u'milkshakes', 'pronoun': u'we'}
+{'verb': u'were covered covered', 'pronoun': u'we'}
+{'verb': u'were sent', 'pronoun': u'we'}
+{'verb': u'was covered covered', 'pronoun': u'I'}
+{'verb': u'had', 'pronoun': u'we'}
+{'verb': u"'re grown", 'pronoun': u'they'}
+{'verb': u"'m", 'pronoun': u'I'}
+{'verb': u'is', 'pronoun': 'it'}
+{'verb': u'work', 'pronoun': u'I'}
+{'verb': u'work', 'pronoun': u'I'}
+{'verb': u'call', 'pronoun': u'I'}
+{'verb': u'gone', 'pronoun': 'they'}
+{'verb': u'give', 'pronoun': u'me'}
+{'verb': u'is', 'pronoun': 'it'}
+{'verb': u'let', 'pronoun': u'I'}
+{'verb': u'let', 'pronoun': u'him'}
+{'verb': u'talk', 'pronoun': u'we'}
+{'verb': u'likes', 'pronoun': u'me'}
+{'verb': u"'re", 'pronoun': 'they'}
+{'verb': u'say', 'pronoun': u'I'}
+{'verb': u'turn', 'pronoun': u'I'}
+{'verb': u'listen', 'pronoun': 'it'}
+{'verb': u"'ve been", 'pronoun': u'I'}
+{'verb': u'go bed bed', 'pronoun': u'I'}
+{'verb': u'is', 'pronoun': u'it'}
+{'verb': u'say', 'pronoun': u'I'}
+{'verb': u'say', 'pronoun': u'I'}
+{'verb': u'was', 'pronoun': u'they'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'wrote', 'pronoun': u'it'}
+{'verb': u'wrote', 'pronoun': u'me'}
+{'verb': u'learned', 'pronoun': u'I'}
+{'verb': u'be', 'pronoun': u'I'}
+{'verb': u'was', 'pronoun': 'they'}
+{'verb': u'switched', 'pronoun': u'me'}
+{'verb': u'sixteen', 'pronoun': 'they'}
+{'verb': u'were supported', 'pronoun': u'we'}
+{'verb': u'cover', 'pronoun': 'they'}
+{'verb': u'ran', 'pronoun': 'they'}
+{'verb': u'writers', 'pronoun': 'they'}
+{'verb': u'stencil', 'pronoun': 'it'}
+{'verb': u'gone', 'pronoun': 'they'}
+{'verb': u'dictate', 'pronoun': u'I'}
+{'verb': u'ornamental', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': 'they'}
+{'verb': u'lovebirds perched', 'pronoun': u'it'}
+{'verb': u'take', 'pronoun': 'it'}
+{'verb': u'started', 'pronoun': 'it'}
+{'verb': u'caught', 'pronoun': 'it'}
+{'verb': u'was hoisted', 'pronoun': 'it'}
+{'verb': u'went', 'pronoun': 'it'}
+{'verb': u'dropped squashed squashed', 'pronoun': u'him'}
+{'verb': u'squashed', 'pronoun': u'him'}
+{'verb': u'was hoisted', 'pronoun': 'it'}
+{'verb': u'went', 'pronoun': 'it'}
+{'verb': u'dropped squashed squashed', 'pronoun': u'him'}
+{'verb': u'squashed', 'pronoun': u'him'}
+{'verb': u'cut', 'pronoun': u'I'}
+{'verb': u'asked', 'pronoun': u'me'}
+{'verb': u'say', 'pronoun': 'they'}
+{'verb': u'said', 'pronoun': u'I'}
+{'verb': u'get', 'pronoun': u'her'}
+{'verb': u'says', 'pronoun': 'it'}
+{'verb': u'did', 'pronoun': u'I'}
+{'verb': u'say', 'pronoun': u'her'}
+{'verb': u'asked', 'pronoun': u'me'}
+{'verb': u'was squashed squashed', 'pronoun': 'it'}
+{'verb': u'bother', 'pronoun': u'you'}
+{'verb': u'said', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': u'I'}
+{'verb': u'had been', 'pronoun': u'it'}
+{'verb': u'had been', 'pronoun': 'it'}
+{'verb': u'tell', 'pronoun': u'I'}
+{'verb': u'had seen', 'pronoun': u'it'}
+{'verb': u'write', 'pronoun': u'I'}
+{'verb': u'told', 'pronoun': u'me'}
+{'verb': u'candles', 'pronoun': 'it'}
+{'verb': u'candles', 'pronoun': 'it'}
+{'verb': u'know', 'pronoun': u'I'}
+{'verb': u'know', 'pronoun': u'I'}
+{'verb': u'everybody', 'pronoun': 'it'}
+{'verb': u'became', 'pronoun': 'they'}
+{'verb': u'bought', 'pronoun': u'I'}
+{'verb': u'bought', 'pronoun': u'I'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': u'I'}
+{'verb': u'joined', 'pronoun': 'it'}
+{'verb': u'had been done', 'pronoun': u'I'}
+{'verb': u'had been', 'pronoun': u'I'}
+{'verb': u'done', 'pronoun': u'I'}
+{'verb': u'lost', 'pronoun': u'I'}
+{'verb': u'were', 'pronoun': 'they'}
+{'verb': u'thought', 'pronoun': u'I'}
+{'verb': u'were fought fought fought', 'pronoun': 'they'}
+{'verb': u'had been', 'pronoun': 'they'}
+{'verb': u'had been', 'pronoun': 'they'}
+{'verb': u'had been', 'pronoun': 'they'}
+{'verb': u'was', 'pronoun': 'they'}
+{'verb': u'said', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'read', 'pronoun': 'they'}
+{'verb': u'said', 'pronoun': u'I'}
+{'verb': u'are', 'pronoun': u'we'}
+{'verb': u'telephone', 'pronoun': u'we'}
+{'verb': u'do', 'pronoun': u'I'}
+{'verb': u'see', 'pronoun': u'him'}
+{'verb': u'see', 'pronoun': u'him'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'is', 'pronoun': 'it'}
+{'verb': u'stop', 'pronoun': u'we'}
+{'verb': u'think', 'pronoun': u'it'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'saw', 'pronoun': u'them'}
+{'verb': u'cliffs', 'pronoun': 'it'}
+{'verb': u'stop', 'pronoun': 'they'}
+{'verb': u'go', 'pronoun': u'it'}
+{'verb': u'go', 'pronoun': 'it'}
+{'verb': u'were', 'pronoun': 'it'}
+{'verb': u'were', 'pronoun': u'they'}
+{'verb': u'were', 'pronoun': u'they'}
+{'verb': u'go', 'pronoun': u'we'}
+{'verb': u'went', 'pronoun': 'it'}
+{'verb': u'supper', 'pronoun': u'we'}
+{'verb': u'knocked', 'pronoun': u'I'}
+{'verb': u'met', 'pronoun': u'I'}
+{'verb': u'dedicate', 'pronoun': u'I'}
+{'verb': u'dedicate', 'pronoun': u'it'}
+{'verb': u'is', 'pronoun': 'it'}
+{'verb': u'be', 'pronoun': 'it'}
+{'verb': u'play', 'pronoun': 'they'}
+{'verb': u'sensed', 'pronoun': u'I'}
+{'verb': u'did', 'pronoun': u'me'}
+{'verb': u'have', 'pronoun': u'you'}
+{'verb': u'said', 'pronoun': u'I'}
+{'verb': u'was', 'pronoun': u'it'}
+{'verb': u'be bothered bothered', 'pronoun': u'you'}
+{'verb': u'be bothered bothered', 'pronoun': u'you'}
+{'verb': u'said', 'pronoun': 'it'}
+{'verb': u'said', 'pronoun': u'I'}
+{'verb': u'chairs', 'pronoun': 'they'}
+{'verb': u'talk', 'pronoun': 'they'}
+{'verb': u'took', 'pronoun': u'us'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'had prepared', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': u'me'}
+{'verb': u'drink', 'pronoun': 'it'}
+{'verb': u'sat', 'pronoun': u'we'}
+{'verb': u'bum', 'pronoun': u'me'}
+{'verb': u'bum', 'pronoun': u'me'}
+{'verb': u'herself', 'pronoun': 'it'}
+{'verb': u'sink', 'pronoun': 'it'}
+{'verb': u'went', 'pronoun': 'it'}
+{'verb': u'sit', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'work', 'pronoun': 'it'}
+{'verb': u'make', 'pronoun': u'I'}
+{'verb': u'said', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': u'him'}
+{'verb': u'tried', 'pronoun': u'we'}
+{'verb': u'remember', 'pronoun': 'it'}
+{'verb': u'tried', 'pronoun': u'we'}
+{'verb': u'remember', 'pronoun': 'it'}
+{'verb': u'remember', 'pronoun': u'us'}
+{'verb': u'remember', 'pronoun': u'us'}
+{'verb': u'remember', 'pronoun': u'us'}
+{'verb': u'was bombed bombed', 'pronoun': u'it'}
+{'verb': u'take', 'pronoun': u'him'}
+{'verb': u'had looted', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': u'it'}
+{'verb': u'was', 'pronoun': u'it'}
+{'verb': u'took', 'pronoun': 'it'}
+{'verb': u'plenty', 'pronoun': u'it'}
+{'verb': u'plenty', 'pronoun': 'it'}
+{'verb': u'turned', 'pronoun': u'me'}
+{'verb': u'was', 'pronoun': u'me'}
+{'verb': u'was', 'pronoun': u'me'}
+{'verb': u'was', 'pronoun': u'me'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'said', 'pronoun': 'it'}
+{'verb': u'said', 'pronoun': u'I'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'had been', 'pronoun': u'we'}
+{'verb': u'write', 'pronoun': u'you'}
+{'verb': u'are', 'pronoun': u'you'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'know', 'pronoun': 'they'}
+{'verb': u'said', 'pronoun': u'I'}
+{'verb': u'said', 'pronoun': 'it'}
+{'verb': u'were', 'pronoun': 'they'}
+{'verb': u'dirty', 'pronoun': 'they'}
+{'verb': u'be played', 'pronoun': u'you'}
+{'verb': u'look', 'pronoun': 'it'}
+{'verb': u'have', 'pronoun': u'them'}
+{'verb': u'be fought', 'pronoun': 'they'}
+{'verb': u'understood', 'pronoun': u'I'}
+{'verb': u'angry', 'pronoun': u'her'}
+{'verb': u'want', 'pronoun': 'it'}
+{'verb': u'babies killed', 'pronoun': 'it'}
+{'verb': u'were encouraged', 'pronoun': 'they'}
+{'verb': u'held', 'pronoun': u'I'}
+{'verb': u'made', 'pronoun': u'I'}
+{'verb': u'said', 'pronoun': u'I'}
+{'verb': u'be finished finished', 'pronoun': 'it'}
+{'verb': u'thrown', 'pronoun': u'them'}
+{'verb': u'be', 'pronoun': u'you'}
+{'verb': u'be', 'pronoun': u'you'}
+{'verb': u'be', 'pronoun': 'it'}
+{'verb': u'be', 'pronoun': 'it'}
+{'verb': u'said', 'pronoun': u'I'}
+{'verb': u'went', 'pronoun': u'I'}
+{'verb': u'talked', 'pronoun': 'they'}
+{'verb': u'curious', 'pronoun': u'we'}
+{'verb': u'looked', 'pronoun': u'it'}
+{'verb': u'had', 'pronoun': 'it'}
+{'verb': u'LL.D', 'pronoun': 'it'}
+{'verb': u'ignorant', 'pronoun': 'they'}
+{'verb': u'were', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': 'they'}
+{'verb': u'acquired rendered rendered', 'pronoun': u'they'}
+{'verb': u'rendered', 'pronoun': u'they'}
+{'verb': u'read', 'pronoun': 'it'}
+{'verb': u'result', 'pronoun': 'it'}
+{'verb': u'possession', 'pronoun': 'they'}
+{'verb': u'Crusade started', 'pronoun': u'us'}
+{'verb': u'got', 'pronoun': u'them'}
+{'verb': u'got', 'pronoun': 'they'}
+{'verb': u'were', 'pronoun': u'they'}
+{'verb': u'swarm nurtured', 'pronoun': 'they'}
+{'verb': u'were', 'pronoun': u'they'}
+{'verb': u'was thrilled thrilled', 'pronoun': 'it'}
+{'verb': u'asleep', 'pronoun': u'we'}
+{'verb': u'said', 'pronoun': 'it'}
+{'verb': u'were shipped', 'pronoun': 'they'}
+{'verb': u'drowned drowned', 'pronoun': u'them'}
+{'verb': u'drowned', 'pronoun': u'them'}
+{'verb': u'were sold sold', 'pronoun': u'they'}
+{'verb': u'were', 'pronoun': 'they'}
+{'verb': u'there-then given', 'pronoun': 'they'}
+{'verb': u'sent', 'pronoun': 'it'}
+{'verb': u'was published', 'pronoun': u'it'}
+{'verb': u'useful', 'pronoun': u'itself'}
+{'verb': u'is hoped', 'pronoun': u'It'}
+{'verb': u'calls', 'pronoun': u'it'}
+{'verb': u'calls', 'pronoun': u'it'}
+{'verb': u'expanded', 'pronoun': 'they'}
+{'verb': u'make', 'pronoun': 'it'}
+{'verb': u'read', 'pronoun': u'I'}
+{'verb': u'began', 'pronoun': 'it'}
+{'verb': u'took', 'pronoun': 'it'}
+{'verb': u'had been transported', 'pronoun': 'it'}
+{'verb': u'were injured', 'pronoun': 'it'}
+{'verb': u'were injured', 'pronoun': 'it'}
+{'verb': u'had been watched watched', 'pronoun': 'it'}
+{'verb': u'stood', 'pronoun': 'it'}
+{'verb': u'dome rebounded', 'pronoun': 'it'}
+{'verb': u'dome', 'pronoun': 'it'}
+{'verb': u'learned', 'pronoun': 'it'}
+{'verb': u'do', 'pronoun': u'we'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'die', 'pronoun': 'it'}
+{'verb': u'found', 'pronoun': 'it'}
+{'verb': u'crossed', 'pronoun': u'it'}
+{'verb': u'crossed', 'pronoun': u'it'}
+{'verb': u'went', 'pronoun': u'we'}
+{'verb': u'like', 'pronoun': 'it'}
+{'verb': u'like', 'pronoun': 'it'}
+{'verb': u'like', 'pronoun': 'it'}
+{'verb': u'keep', 'pronoun': u'it'}
+{'verb': u'keep', 'pronoun': u'it'}
+{'verb': u'got', 'pronoun': u'it'}
+{'verb': u'wrote', 'pronoun': u'I'}
+{'verb': u'gave', 'pronoun': u'me'}
+{'verb': u'named', 'pronoun': 'it'}
+{'verb': u'said', 'pronoun': u'I'}
+{'verb': u'be', 'pronoun': 'it'}
+{'verb': u'say', 'pronoun': u'I'}
+{'verb': u'is', 'pronoun': u'it'}
+{'verb': u'say', 'pronoun': 'it'}
+{'verb': u'is', 'pronoun': 'it'}
+{'verb': u'be', 'pronoun': 'they'}
+{'verb': u'want', 'pronoun': 'it'}
+{'verb': u'is', 'pronoun': 'they'}
+{'verb': u'say', 'pronoun': 'it'}
+{'verb': u'told', 'pronoun': u'I'}
+{'verb': u'take', 'pronoun': u'they'}
+{'verb': u'fill', 'pronoun': 'they'}
+{'verb': u'make', 'pronoun': 'they'}
+{'verb': u'need', 'pronoun': u'we'}
+{'verb': u'went', 'pronoun': u'I'}
+{'verb': u'write', 'pronoun': u'I'}
+{'verb': u'write', 'pronoun': u'I'}
+{'verb': u'write', 'pronoun': u'I'}
+{'verb': u'be', 'pronoun': u'them'}
+{'verb': u'be', 'pronoun': u'them'}
+{'verb': u'be', 'pronoun': 'it'}
+{'verb': u'be', 'pronoun': 'it'}
+{'verb': u'go', 'pronoun': u'we'}
+{'verb': u'go', 'pronoun': u'we'}
+{'verb': u'became', 'pronoun': u'I'}
+{'verb': u'sent', 'pronoun': u'us'}
+{'verb': u'pass', 'pronoun': 'it'}
+{'verb': u'twitch', 'pronoun': 'it'}
+{'verb': u'pass', 'pronoun': 'it'}
+{'verb': u'twitch', 'pronoun': u'it'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'do', 'pronoun': u'it'}
+{'verb': u'clocks', 'pronoun': u'I'}
+{'verb': u'read', 'pronoun': u'I'}
+{'verb': u'read', 'pronoun': u'I'}
+{'verb': u'take', 'pronoun': u'I'}
+{'verb': u'take', 'pronoun': u'I'}
+{'verb': u'take', 'pronoun': u'I'}
+{'verb': u'fear', 'pronoun': u'I'}
+{'verb': u'go', 'pronoun': u'I'}
+{'verb': u'go', 'pronoun': u'I'}
+{'verb': u'C\xe9line', 'pronoun': 'it'}
+{'verb': u'sleep', 'pronoun': 'it'}
+{'verb': u'noises', 'pronoun': 'it'}
+{'verb': u'became', 'pronoun': 'it'}
+{'verb': u'treated', 'pronoun': 'they'}
+{'verb': u'novels', 'pronoun': 'it'}
+{'verb': u'wrote', 'pronoun': 'it'}
+{'verb': u'is', 'pronoun': 'it'}
+{'verb': u'wrote', 'pronoun': 'it'}
+{'verb': u"'ve fought", 'pronoun': u'I'}
+{'verb': u'danced', 'pronoun': u'it'}
+{'verb': u'titillated obsessed obsessed obsessed', 'pronoun': u'him'}
+{'verb': u'obsessed', 'pronoun': u'him'}
+{'verb': u'stop', 'pronoun': 'it'}
+{'verb': u'anymore', 'pronoun': u'them'}
+{'verb': u'freeze', 'pronoun': u'them'}
+{'verb': u'read', 'pronoun': u'I'}
+{'verb': u'read', 'pronoun': u'I'}
+{'verb': u'rained', 'pronoun': 'it'}
+{'verb': u'rained', 'pronoun': 'it'}
+{'verb': u'were', 'pronoun': 'they'}
+{'verb': u'was', 'pronoun': u'them'}
+{'verb': u'had', 'pronoun': 'they'}
+{'verb': u'had', 'pronoun': 'they'}
+{'verb': u'look', 'pronoun': 'it'}
+{'verb': u'love', 'pronoun': u'her'}
+{'verb': u'was', 'pronoun': u'it'}
+{'verb': u'be', 'pronoun': u'I'}
+{'verb': u'is', 'pronoun': 'it'}
+{'verb': u'was written', 'pronoun': u'it'}
+{'verb': u'was written', 'pronoun': u'it'}
+{'verb': u'unstuck', 'pronoun': 'it'}
+{'verb': u'unstuck', 'pronoun': 'it'}
+{'verb': u'awakened', 'pronoun': 'it'}
+{'verb': u'has walked', 'pronoun': 'it'}
+{'verb': u'come', 'pronoun': 'it'}
+{'verb': u'find', 'pronoun': u'himself'}
+{'verb': u'has seen', 'pronoun': 'it'}
+{'verb': u'says', 'pronoun': 'it'}
+{'verb': u'visits', 'pronoun': 'they'}
+{'verb': u'says', 'pronoun': 'it'}
+{'verb': u'are', 'pronoun': 'it'}
+{'verb': u'is', 'pronoun': 'it'}
+{'verb': u'is', 'pronoun': 'it'}
+{'verb': u'says', 'pronoun': 'it'}
+{'verb': u'act', 'pronoun': 'it'}
+{'verb': u'knows', 'pronoun': 'it'}
+{'verb': u'youth-tall', 'pronoun': 'they'}
+{'verb': u'shaped', 'pronoun': 'it'}
+{'verb': u'graduated', 'pronoun': 'it'}
+{'verb': u'attended drafted', 'pronoun': 'they'}
+{'verb': u'died', 'pronoun': 'it'}
+{'verb': u'died', 'pronoun': 'it'}
+{'verb': u'prisoner', 'pronoun': 'it'}
+{'verb': u'enrolled', 'pronoun': 'it'}
+{'verb': u'became engaged', 'pronoun': 'it'}
+{'verb': u'suffered', 'pronoun': 'it'}
+{'verb': u'was treated', 'pronoun': 'it'}
+{'verb': u'treatments released', 'pronoun': 'they'}
+{'verb': u'married', 'pronoun': 'it'}
+{'verb': u'set', 'pronoun': 'it'}
+{'verb': u'is', 'pronoun': 'it'}
+{'verb': u'is required', 'pronoun': 'it'}
+{'verb': u'is', 'pronoun': 'they'}
+{'verb': u'calls', 'pronoun': 'it'}
+{'verb': u'is', 'pronoun': 'it'}
+{'verb': u'had', 'pronoun': 'they'}
+{'verb': u'married', 'pronoun': 'it'}
+{'verb': u'set', 'pronoun': u'him'}
+{'verb': u'joined', 'pronoun': 'it'}
+{'verb': u'straightened', 'pronoun': 'it'}
+{'verb': u'became fought', 'pronoun': 'it'}
+{'verb': u'fly', 'pronoun': 'they'}
+{'verb': u'crashed', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'died', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'died', 'pronoun': 'it'}
+{'verb': u'quiet', 'pronoun': 'it'}
+{'verb': u'went', 'pronoun': 'it'}
+{'verb': u'got devoted devoted', 'pronoun': 'it'}
+{'verb': u'devoted', 'pronoun': 'it'}
+{'verb': u'unstuck', 'pronoun': 'it'}
+{'verb': u'said', 'pronoun': 'it'}
+{'verb': u'had been kidnapped', 'pronoun': 'it'}
+{'verb': u'had been kidnapped', 'pronoun': 'it'}
+{'verb': u'said', 'pronoun': 'it'}
+{'verb': u'was displayed naked', 'pronoun': 'it'}
+{'verb': u'was displayed naked', 'pronoun': 'it'}
+{'verb': u'said', 'pronoun': 'it'}
+{'verb': u'owls', 'pronoun': 'it'}
+{'verb': u'called', 'pronoun': u'them'}
+{'verb': u'went', 'pronoun': 'it'}
+{'verb': u'brought', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'had taken', 'pronoun': u'him'}
+{'verb': u'be', 'pronoun': 'they'}
+{'verb': u'be', 'pronoun': 'it'}
+{'verb': u'published', 'pronoun': 'it'}
+{'verb': u'published', 'pronoun': 'it'}
+{'verb': u'were shaped', 'pronoun': 'they'}
+{'verb': u'pointed', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'see', 'pronoun': 'they'}
+{'verb': u'see', 'pronoun': 'it'}
+{'verb': u'had', 'pronoun': 'they'}
+{'verb': u'were', 'pronoun': 'they'}
+{'verb': u'was published published', 'pronoun': 'it'}
+{'verb': u'started', 'pronoun': 'it'}
+{'verb': u'die', 'pronoun': 'it'}
+{'verb': u'die', 'pronoun': 'it'}
+{'verb': u'is', 'pronoun': 'it'}
+{'verb': u'is', 'pronoun': 'they'}
+{'verb': u'have existed existed', 'pronoun': 'it'}
+{'verb': u'look', 'pronoun': u'we'}
+{'verb': u'look', 'pronoun': u'we'}
+{'verb': u'look', 'pronoun': u'them'}
+{'verb': u'is', 'pronoun': u'it'}
+{'verb': u'have', 'pronoun': 'they'}
+{'verb': u'is', 'pronoun': u'it'}
+{'verb': u'is', 'pronoun': 'it'}
+{'verb': u'sees', 'pronoun': 'it'}
+{'verb': u'is', 'pronoun': 'it'}
+{'verb': u'is', 'pronoun': 'it'}
+{'verb': u'say', 'pronoun': u'I'}
+{'verb': u'is', 'pronoun': u'I'}
+{'verb': u'say', 'pronoun': 'it'}
+{'verb': u'goes', 'pronoun': u'it'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': 'it'}
+{'verb': u'had', 'pronoun': 'it'}
+{'verb': u'was', 'pronoun': 'they'}
+{'verb': u'had noticed', 'pronoun': 'it'}

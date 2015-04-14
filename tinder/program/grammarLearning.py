@@ -82,4 +82,4 @@ with open(learningCorpusName) as f:
             if verb != '' and pronoun != '':
                 pronounVerbPhrase = {"pronoun": pronoun,
                                     "verb": verb}
-                print pronounVerbPhrase
+                pronounVerbPhrases.insert(pronounVerbPhrase)
