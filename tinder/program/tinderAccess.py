@@ -13,6 +13,7 @@ def authenticate(FBTOKEN, FBID):
 
 def postForm(url, data, token):
     postURL = "https://api.gotinder.com/" + url
+    print postURL
     postData = urllib.urlencode(data)
     req = urllib2.Request(postURL, postData)
     req.add_header("X-Auth-Token", token)
@@ -22,3 +23,5 @@ def postForm(url, data, token):
 def sendMessage(to, message, token):
     url = 'matches/' + to 
     data = {"message": message}
+    pprint(postForm(url, data, token))
+    print "\n"

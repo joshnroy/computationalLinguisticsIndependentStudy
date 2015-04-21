@@ -13,6 +13,7 @@ LAT = "42.312449"
 LON = "-71.035905"
 data = {"lat": LAT, "lon": LON}
 token = authenticate(FBTOKEN, FBID)['token']
+print(token)
 
 # Setting up the database stuff
 client = MongoClient()
@@ -46,7 +47,8 @@ def replyToMessages(messages, token):
     pass
 
 def getMatches(token):
-    matches = postForm("updates", "", token)['matches']
+    update = postForm("updates", "", token)
+    pprint(update)
     recievedMatches = []
     for match in matches:
         messages = match['messages']
@@ -58,7 +60,8 @@ def getMatches(token):
 # THE ACTUAL PROGRAM
 
 matches = getMatches(token)
-pprint(matches)
+for match in matches:
+    sendMessage(match, "Hey, what's up?", token)
 
 while False:
     newMessages = checkForNewMessages(token)
