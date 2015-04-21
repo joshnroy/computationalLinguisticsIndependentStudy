@@ -18,3 +18,7 @@ def postForm(url, data, token):
     req.add_header("X-Auth-Token", token)
     response = urllib2.urlopen(req)
     return json.loads(response.read())
+
+def sendMessage(to, message, token):
+    url = 'matches/' + to 
+    data = {"message": message}
