@@ -7,7 +7,7 @@ from tinderAccess import authenticate, postForm, sendMessage
 from time import sleep
 
 # Variables
-FBTOKEN="CAAGm0PX4ZCpsBAGwZCGiKIYukGLJtBpMZCH29C4kN2hZB7tXJLuk4EvO0yArTZC7SoZBJlfYcAbdcZBTqV3CaFGQuV9JkM7vAVWN0UvZA3h05IerwYS2gaqSOiqNPfWEvMz1bzsnpVdoJFkGevNUtthpkOjOfkPa4ioMkZCBOkBZAZBDVbcIdHus3mLeTRyxpkOv059L9FdoU54pj2kPDDPcjMZBn60ryg1Xi3QZD"
+FBTOKEN="CAAGm0PX4ZCpsBAGXntIy0L2oDs5Fl8vZBGXPbRmk2E0bzTT3gIjFE5Teg5AuZBkXeLdA5mGFOEFTqtYBKpkUrkaCG4IMLxSWxZAXHPX7ZBcZBdawFDAt9ZB7MZCWZCnMCkC4IdIypNE3qeN9rbz5wTN8jxjOzdM9r6gKFjHTdkDP3X8Dn7gVTdOqlG6TKTQJ4VGPB5fLRpicXZAKRgJJYGn5QgMSLZB3LqiLHsZD"
 FBID="100009426311666"
 LAT = "42.312449"
 LON = "-71.035905"
@@ -26,6 +26,8 @@ pronounVerbPhrases = db['pronounVerbPhrases']
 messagesAndResponses = db['messagesAndResponses']
 
 openingMessages = db['openingMessages']
+
+pronounResponses = db['pronounResponses']
 
 # Setting up the processing stuff
 parser = Parser()
@@ -83,7 +85,16 @@ if False:
                 messagePair = {}
 
 # The learning part
-if True:
+if False:
     for messagePair in messagesAndResponses.find():
-        recievedTree = parser.parse(messagePair['Recieved'])
-        sentTree = parser.parse(messagePair['Sent'])
+        try:
+            recievedTree = parser.parse(messagePair['Recieved'])
+        except TypeError as e:
+            print e
+        try:
+            sentTree = parser.parse(messagePair['Sent'])
+        except TypeError as e:
+            print e
+        for pronoun in recievedTree.subtrees(filter=lambda x: x.label() == 'PRP'):
+            for sendPronoun in sentTree.subtrees(filter=lambda x: x.label() == 'PRP'):
+                pronounResponses.insert({"Recieved": pronoun, "Sent": sendPronoun})
