@@ -21,8 +21,6 @@ db = client['tinderBot']
 
 names = db['names']
 
-messages = db['messages']
-
 pronounVerbPhrases = db['pronounVerbPhrases']
 
 # Setting up the processing stuff
@@ -51,12 +49,6 @@ def getMatches(token):
     matches = update['matches']
     for match in matches:
         recievedMatches.append(match['_id'])
-        '''
-        messages = match['messages']
-        for message in messages:
-            if message['to'] == '552d6a6275a887851e60ab54':
-                recievedMatches.append(message['from'])
-        '''
     return set(recievedMatches)
 
 # THE ACTUAL PROGRAM
