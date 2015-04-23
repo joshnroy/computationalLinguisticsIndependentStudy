@@ -26,3 +26,4 @@ Creates the weighted list from a series of conversations taken from my imessage 
 # Things to Consider
 1. Maybe only record the speech patterns from one gender?
 2. Maybe use one gender to learn and one to test?
+3. Identify the type of each word and record the likelihood that a response word shows up based on every word
