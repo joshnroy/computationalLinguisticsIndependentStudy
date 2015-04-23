@@ -58,17 +58,19 @@ def getMatches(token):
 # THE ACTUAL PROGRAM
 
 while False:
+    newMatches = checkForNewMatches(token)
+    startMessages(newMatches, token)
     newMessages = checkForNewMessages(token)
     replyToMessages(newMessages, token)
     sleep(60)
 
 
 # THE sending messages to database program
-if True:
+if False:
     matches = postForm("updates", "", token)['matches']
     for match in matches:
         messages = match['messages']
-        messagePair = {}
+        messagePair = {"Rating": 0}
         for message in messages:
             if message['to'] == '552d6a6275a887851e60ab54':
                 messagePair['Recieved'] = message['message']
@@ -79,3 +81,7 @@ if True:
                 else:
                     openingMessages.insert(messagePair)
                 messagePair = {}
+
+# The learning part
+if True:
+    for messagePair in messagesAndResponses.find():
