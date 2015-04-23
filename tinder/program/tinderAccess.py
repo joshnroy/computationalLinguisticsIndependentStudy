@@ -21,7 +21,7 @@ def postForm(url, data, token):
     return json.loads(response.read())
 
 def sendMessage(to, message, token):
-    url = 'matches/' + to 
+    url = 'user/matches/' + to 
     data = {"message": message}
     pprint(postForm(url, data, token))
     print "\n"

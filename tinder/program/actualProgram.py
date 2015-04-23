@@ -7,13 +7,12 @@ from tinderAccess import authenticate, postForm, sendMessage
 from time import sleep
 
 # Variables
-FBTOKEN="CAAGm0PX4ZCpsBAE4rYNNsrF9SZBu4INR2udjL0BU5OtMluo7Q05MY20yNdvZB9kfjKtP0RbCYHrvZBA2VcRGIXZCRc4Ut8c5AnqDPrF7RLuYSkXP5hOuM0r27I2KT5n2h7bmEJZA3ro05K9KzKwIwOOhDtMzbBQfoeiO31P0H4QOKtxZCTqEJAu59Rmkjd28e8elEEQO24FZAhYGvsZBUwoXofygmTUjP3GwZD"
+FBTOKEN="CAAGm0PX4ZCpsBAGwZCGiKIYukGLJtBpMZCH29C4kN2hZB7tXJLuk4EvO0yArTZC7SoZBJlfYcAbdcZBTqV3CaFGQuV9JkM7vAVWN0UvZA3h05IerwYS2gaqSOiqNPfWEvMz1bzsnpVdoJFkGevNUtthpkOjOfkPa4ioMkZCBOkBZAZBDVbcIdHus3mLeTRyxpkOv059L9FdoU54pj2kPDDPcjMZBn60ryg1Xi3QZD"
 FBID="100009426311666"
 LAT = "42.312449"
 LON = "-71.035905"
 data = {"lat": LAT, "lon": LON}
 token = authenticate(FBTOKEN, FBID)['token']
-print(token)
 
 # Setting up the database stuff
 client = MongoClient()
@@ -48,19 +47,23 @@ def replyToMessages(messages, token):
 
 def getMatches(token):
     update = postForm("updates", "", token)
-    pprint(update)
     recievedMatches = []
+    matches = update['matches']
     for match in matches:
+        recievedMatches.append(match['_id'])
+        '''
         messages = match['messages']
         for message in messages:
             if message['to'] == '552d6a6275a887851e60ab54':
                 recievedMatches.append(message['from'])
+        '''
     return set(recievedMatches)
 
 # THE ACTUAL PROGRAM
 
 matches = getMatches(token)
 for match in matches:
+    print(match)
     sendMessage(match, "Hey, what's up?", token)
 
 while False:
