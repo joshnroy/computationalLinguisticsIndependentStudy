@@ -85,3 +85,4 @@ if False:
 # The learning part
 if True:
     for messagePair in messagesAndResponses.find():
+        parser.parse(messagePair['Recieved']).draw()
