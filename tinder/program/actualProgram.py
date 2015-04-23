@@ -23,6 +23,8 @@ names = db['names']
 
 pronounVerbPhrases = db['pronounVerbPhrases']
 
+messagesAndResponses = db['messagesAndResponses']
+
 # Setting up the processing stuff
 parser = Parser()
 
@@ -57,3 +59,17 @@ while False:
     newMessages = checkForNewMessages(token)
     replyToMessages(newMessages, token)
     sleep(60)
+
+
+# THE TRAINING PROGRAM
+matches = postForm("updates", "", token)['matches']
+for match in matches:
+    messages = match['messages']
+    for message in messages:
+        if message['to'] == '552d6a6275a887851e60ab54':
+            print("Recieved\n")
+        else:
+            print("Sent\n")
+        pprint(message['message'])
+        print("\n")
+    print("###########################################################################################################################################################")
