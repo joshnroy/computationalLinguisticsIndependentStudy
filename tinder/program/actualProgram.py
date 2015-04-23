@@ -61,11 +61,6 @@ def getMatches(token):
 
 # THE ACTUAL PROGRAM
 
-matches = getMatches(token)
-for match in matches:
-    print(match)
-    sendMessage(match, "Hey, what's up?", token)
-
 while False:
     newMessages = checkForNewMessages(token)
     replyToMessages(newMessages, token)
