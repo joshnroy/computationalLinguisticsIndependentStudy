@@ -5,9 +5,10 @@ from nltk.tree import *
 from pprint import pprint
 from tinderAccess import authenticate, postForm, sendMessage
 from time import sleep
+from nltk.util import ngrams
 
 # Variables
-FBTOKEN="CAAGm0PX4ZCpsBAGXntIy0L2oDs5Fl8vZBGXPbRmk2E0bzTT3gIjFE5Teg5AuZBkXeLdA5mGFOEFTqtYBKpkUrkaCG4IMLxSWxZAXHPX7ZBcZBdawFDAt9ZB7MZCWZCnMCkC4IdIypNE3qeN9rbz5wTN8jxjOzdM9r6gKFjHTdkDP3X8Dn7gVTdOqlG6TKTQJ4VGPB5fLRpicXZAKRgJJYGn5QgMSLZB3LqiLHsZD"
+FBTOKEN="CAAGm0PX4ZCpsBAJQkND9pkYyntjZBOYdiVbz9TocR49mQ0xEBZCSMYLIzcMGy7sukyrliVg9GUUmllyx8mSNFkJMdHvlb9AHEk2RhNXZAr7qLjdzwRo7wH2Xns7W4TMQPcViZCJlSqTX5xBZBIsd7lboBb7t2jgOqsMxpftupIjenxBnGweK7OkD9uN2QJNBuufSc3JuusXtAEvARdj1Bes3REj2AysVoZD"
 FBID="100009426311666"
 LAT = "42.312449"
 LON = "-71.035905"
@@ -85,8 +86,15 @@ if False:
                 messagePair = {}
 
 # The learning part
-if False:
+if True:
     for messagePair in messagesAndResponses.find():
+        recievedBigrams = ngrams(nltk.word_tokenize(messagePair['Recieved']), 2)
+        sentBigrams = ngrams(nltk.word_tokenize(messagePair['Sent']), 2)
+        for recievedBigram in recievedBigrams:
+            for sentBigram in sentBigrams:
+                print str(recievedBigram) + "\t" + str(sentBigram)
+        print "################################################################"
+        '''
         try:
             recievedTree = parser.parse(messagePair['Recieved'])
         except TypeError as e:
@@ -95,6 +103,4 @@ if False:
             sentTree = parser.parse(messagePair['Sent'])
         except TypeError as e:
             print e
-        for pronoun in recievedTree.subtrees(filter=lambda x: x.label() == 'PRP'):
-            for sendPronoun in sentTree.subtrees(filter=lambda x: x.label() == 'PRP'):
-                pronounResponses.insert({"Recieved": pronoun, "Sent": sendPronoun})
+        '''
