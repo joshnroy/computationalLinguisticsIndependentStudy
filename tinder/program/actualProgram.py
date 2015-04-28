@@ -8,7 +8,7 @@ from time import sleep
 from nltk.util import ngrams
 
 # Variables
-FBTOKEN="CAAGm0PX4ZCpsBAOLhjoUQMiq8jAY1QcZCF5sAqMZC8Jeovv4fyK8QiHQ7aQ0QeT0vFQZBCrysEYC315yaIAtmKZC6s6f3zCwUGt73dw44rv0yiXf0KAgRcDzh3s4ZBynOlWs7EPFPdVQ0iJZAwoZC6ZBcMWzgZAismorj9muNcXctViZBbGT45F1ylDZBDatrSFSon4qXIsalW9QvLj87m7DwUwCLP4MGnjGEyIZD"
+FBTOKEN="CAAGm0PX4ZCpsBAHsYNEg1S71ayipuKPVhjpTubCn9P8KD593fnEZBzfLlGx5riVcHDrah64pYyBeUq848V4i79yBLNUw3ItRtG1CD4OzlNE3ZB1xLfx78MUnF4ng7eLZAkiNMVZBr9RmQCTUYrd4TgCTIaq72G0s1ue6ZB8FJrBl2rMDJ80ZCUvVVhZBtzmdIDFZBbSazZAFoXTjZAAnE3cIfHpU6lnCquE4cIZD"
 FBID="100009426311666"
 LAT = "42.312449"
 LON = "-71.035905"
@@ -55,16 +55,22 @@ def replyToMessages(messages, token):
     sentMessages = []
     for message in messages:
         messageToSend = ""
+        possibleBigrams = {}
         possibleMessages = messagesAndResponses.find({"message": message['message']})
         if possibleMessages.count() == 0:
-            recievedBigrams = ngrams(nltk.word_tokenize(message), 2)
+            recievedBigrams = ngrams(nltk.word_tokenize(message['message']), 2)
             for bigram in recievedBigrams:
-                possibleSentBigrams = bigramPairs.find({"recieved", bigram}).sort({"rating": -1})
-                pprint(possibleSentBigrams)
+                possibleSentBigrams = bigramPairs.find({"recieved": bigram}).sort([("rating", -1)])
+                for bigram in possibleSentBigrams:
+                    if bigram[str(bigram['sent'])] in possibleBigrams:
+                        print possibleBigrams[bigram[str(bigram['sent'])]]['rating']
+                    else:
+                        possibleBigrams[bigram['sent'][0] + bigram['sent'][1]] = bigram['sent']
         elif possibleMessages.count() == 1:
             messageToSend = possibleMessages
         else:
             messageToSend = possibleMessages.find().limit(-1).skip(random.randint(0, possibleMessages.count() - 1)).next()
+
 #        sendMessage(message['from'], messageToSend, token)
 #        sentMessages.append({"to": message['from'], "message": messageToSend})
     print("Replied to all messages")
@@ -81,8 +87,12 @@ def checkForNewMatches(token):
     matches = postForm("updates", "", token)['matches']
     newMatches = []
     for match in matches:
-        if match['messages'] == []:
+        messages = match['messages']
+        if messages == []:
             newMatches.append(match['_id'])
+        elif len(messages) == 1:
+            newMatches.append(match['_id'])
+            openingMessages.insert({"sent": messages[0]['message'].replace('Mackenzie', '')})
     return newMatches
 
 def startMessages(matches, token):
@@ -98,17 +108,16 @@ def learnFromMessages(newMessages, sentMessages, startMessages):
     pass
 
 # THE ACTUAL PROGRAM
+# while True:
 sentReplies = []
 sentStarts = []
-while True:
-    newMatches = checkForNewMatches(token)
-    if newMatches:
-        sentStarts = startMessages(newMatches, token)
-    newMessages = checkForNewMessages(token)
-    if newMessages:
-        learnFromMessages(newMessages, sentReplies, sentStarts)
-#    sentReplies = replyToMessages(newMessages, token)
-    sleep(30)
+newMatches = checkForNewMatches(token)
+sentStarts = startMessages(newMatches, token)
+newMessages = checkForNewMessages(token)
+if newMessages:
+    learnFromMessages(newMessages, sentReplies, sentStarts)
+sentReplies = replyToMessages(newMessages, token)
+#    sleep(30)
 
 
 # THE sending messages to database program
