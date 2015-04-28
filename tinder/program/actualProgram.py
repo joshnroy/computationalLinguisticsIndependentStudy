@@ -8,7 +8,7 @@ from time import sleep
 from nltk.util import ngrams
 
 # Variables
-FBTOKEN="CAAGm0PX4ZCpsBAJQkND9pkYyntjZBOYdiVbz9TocR49mQ0xEBZCSMYLIzcMGy7sukyrliVg9GUUmllyx8mSNFkJMdHvlb9AHEk2RhNXZAr7qLjdzwRo7wH2Xns7W4TMQPcViZCJlSqTX5xBZBIsd7lboBb7t2jgOqsMxpftupIjenxBnGweK7OkD9uN2QJNBuufSc3JuusXtAEvARdj1Bes3REj2AysVoZD"
+FBTOKEN="CAAGm0PX4ZCpsBAOLhjoUQMiq8jAY1QcZCF5sAqMZC8Jeovv4fyK8QiHQ7aQ0QeT0vFQZBCrysEYC315yaIAtmKZC6s6f3zCwUGt73dw44rv0yiXf0KAgRcDzh3s4ZBynOlWs7EPFPdVQ0iJZAwoZC6ZBcMWzgZAismorj9muNcXctViZBbGT45F1ylDZBDatrSFSon4qXIsalW9QvLj87m7DwUwCLP4MGnjGEyIZD"
 FBID="100009426311666"
 LAT = "42.312449"
 LON = "-71.035905"
@@ -30,6 +30,10 @@ openingMessages = db['openingMessages']
 
 pronounResponses = db['pronounResponses']
 
+bigramPairs = db['bigramPairs']
+
+verbPairs = db['verbPairs']
+
 # Setting up the processing stuff
 parser = Parser()
 
@@ -48,18 +52,30 @@ def checkForNewMessages(token):
     return recievedMessages
 
 def replyToMessages(messages, token):
+    sentMessages = []
     for message in messages:
-        messageToSend = "" # Do this part
-        sendMessage(messages['from'], messageToSend, token)
-        print("Replied to all messages")
+        messageToSend = ""
+        possibleMessages = messagesAndResponses.find({"message": message['message']})
+        if possibleMessages.count() == 0:
+            recievedBigrams = ngrams(nltk.word_tokenize(message), 2)
+            for bigram in recievedBigrams:
+                possibleSentBigrams = bigramPairs.find({"recieved", bigram}).sort({"rating": -1})
+                pprint(possibleSentBigrams)
+        elif possibleMessages.count() == 1:
+            messageToSend = possibleMessages
+        else:
+            messageToSend = possibleMessages.find().limit(-1).skip(random.randint(0, possibleMessages.count() - 1)).next()
+#        sendMessage(message['from'], messageToSend, token)
+#        sentMessages.append({"to": message['from'], "message": messageToSend})
+    print("Replied to all messages")
+    return sentMessages
 
 def getMatches(token):
     update = postForm("updates", "", token)
-    recievedMatches = []
     matches = update['matches']
     for match in matches:
         recievedMatches.append(match)
-    return set(recievedMatches)
+    return recievedMatches
 
 def checkForNewMatches(token):
     matches = postForm("updates", "", token)['matches']
@@ -67,23 +83,32 @@ def checkForNewMatches(token):
     for match in matches:
         if match['messages'] == []:
             newMatches.append(match['_id'])
-    return set(newMatches)
+    return newMatches
 
 def startMessages(matches, token):
+    sentMessages = []
     for match in matches:
         messageToSend = openingMessages.find().limit(-1).skip(random.randint(0, openingMessages.count() - 1)).next()
-        sendMessage(match['_id'], messageToSend, token)
-        print("Sent messages to all new matches")
+        sendMessage(match, messageToSend['Sent'], token)
+        sentMessages.append({"to": match, "message": messageToSend['Sent']})
+    print("Sent messages to all new matches")
+    return sentMessages
 
+def learnFromMessages(newMessages, sentMessages, startMessages):
+    pass
 
 # THE ACTUAL PROGRAM
-
-while False:
+sentReplies = []
+sentStarts = []
+while True:
     newMatches = checkForNewMatches(token)
-    startMessages(newMatches, token)
+    if newMatches:
+        sentStarts = startMessages(newMatches, token)
     newMessages = checkForNewMessages(token)
-    replyToMessages(newMessages, token)
-    sleep(3600)
+    if newMessages:
+        learnFromMessages(newMessages, sentReplies, sentStarts)
+#    sentReplies = replyToMessages(newMessages, token)
+    sleep(30)
 
 
 # THE sending messages to database program
@@ -104,15 +129,18 @@ if False:
                 messagePair = {}
 
 # The learning part
-if True:
+if False:
     for messagePair in messagesAndResponses.find():
-        if False:
+        if True:
             recievedBigrams = ngrams(nltk.word_tokenize(messagePair['Recieved']), 2)
             sentBigrams = ngrams(nltk.word_tokenize(messagePair['Sent']), 2)
             for recievedBigram in recievedBigrams:
                 for sentBigram in sentBigrams:
-                    print str(recievedBigram) + "\t" + str(sentBigram)
-            print "################################################################"
+                    if bigramPairs.find({"recieved": recievedBigram, "sent": sentBigram}).count() != 0:
+                        pairToUpdate = bigramPairs.find_one({"recieved": recievedBigram, "sent": sentBigram})
+                        bigramPairs.update({"recieved": recievedBigram, "sent": sentBigram}, {"rating": pairToUpdate['rating'] + 1})
+                    else:
+                        bigramPairs.insert({"recieved": recievedBigram, "sent": sentBigram, "rating": 1})
         try:
             recievedTree = parser.parse(messagePair['Recieved'])
         except TypeError as e:
@@ -123,7 +151,8 @@ if True:
             print e
         for recievedVerb  in recievedTree.subtrees(filter=lambda x: x.label() == "VB" or x.label() == "VBD" or x.label() == "VBG" or x.label() == "VBN" or x.label() == "VBP" or x.label() == "VBZ"):
             for sentVerb in sentTree.subtrees(filter=lambda x: x.label() == "VB" or x.label() == "VBD" or x.label() == "VBG" or x.label() == "VBN" or x.label() == "VBP" or x.label() == "VBZ"):
-                print recievedVerb
-                print sentVerb
-                print "########################################################"
-
+                if verbPairs.find({"recieved": recievedVerb, "sent": sentVerb}).count() != 0:
+                    verbPair = verbPairs.find_one({"recieved": recievedVerb, "sent": sentVerb})
+                    verbPairs.update({"recieved": recievedVerb, "sent": sentVerb}, {"rating": verbPair['rating'] + 1})
+                else:
+                    verbPairs.insert({"recieved": recievedVerb, "sent": sentVerb, "rating": 1})
