@@ -22,5 +22,4 @@ def postForm(url, data, token):
 def sendMessage(to, message, token):
     url = 'user/matches/' + to 
     data = {"message": message}
-    pprint(postForm(url, data, token))
-    print "\n"
+    postForm(url, data, token)

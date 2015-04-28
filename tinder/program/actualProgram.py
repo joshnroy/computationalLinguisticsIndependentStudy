@@ -1,4 +1,4 @@
-import pymongo, nltk, sys, os, stat_parser
+import pymongo, nltk, sys, os, stat_parser, random
 from pymongo import MongoClient
 from stat_parser import Parser, display_tree
 from nltk.tree import *
@@ -48,15 +48,33 @@ def checkForNewMessages(token):
     return recievedMessages
 
 def replyToMessages(messages, token):
-    pass
+    for message in messages:
+        messageToSend = "" # Do this part
+        sendMessage(messages['from'], messageToSend, token)
+        print("Replied to all messages")
 
 def getMatches(token):
     update = postForm("updates", "", token)
     recievedMatches = []
     matches = update['matches']
     for match in matches:
-        recievedMatches.append(match['_id'])
+        recievedMatches.append(match)
     return set(recievedMatches)
+
+def checkForNewMatches(token):
+    matches = postForm("updates", "", token)['matches']
+    newMatches = []
+    for match in matches:
+        if match['messages'] == []:
+            newMatches.append(match['_id'])
+    return set(newMatches)
+
+def startMessages(matches, token):
+    for match in matches:
+        messageToSend = openingMessages.find().limit(-1).skip(random.randint(0, openingMessages.count() - 1)).next()
+        sendMessage(match['_id'], messageToSend, token)
+        print("Sent messages to all new matches")
+
 
 # THE ACTUAL PROGRAM
 
@@ -65,7 +83,7 @@ while False:
     startMessages(newMatches, token)
     newMessages = checkForNewMessages(token)
     replyToMessages(newMessages, token)
-    sleep(60)
+    sleep(3600)
 
 
 # THE sending messages to database program
@@ -88,13 +106,13 @@ if False:
 # The learning part
 if True:
     for messagePair in messagesAndResponses.find():
-        recievedBigrams = ngrams(nltk.word_tokenize(messagePair['Recieved']), 2)
-        sentBigrams = ngrams(nltk.word_tokenize(messagePair['Sent']), 2)
-        for recievedBigram in recievedBigrams:
-            for sentBigram in sentBigrams:
-                print str(recievedBigram) + "\t" + str(sentBigram)
-        print "################################################################"
-        '''
+        if False:
+            recievedBigrams = ngrams(nltk.word_tokenize(messagePair['Recieved']), 2)
+            sentBigrams = ngrams(nltk.word_tokenize(messagePair['Sent']), 2)
+            for recievedBigram in recievedBigrams:
+                for sentBigram in sentBigrams:
+                    print str(recievedBigram) + "\t" + str(sentBigram)
+            print "################################################################"
         try:
             recievedTree = parser.parse(messagePair['Recieved'])
         except TypeError as e:
@@ -103,4 +121,9 @@ if True:
             sentTree = parser.parse(messagePair['Sent'])
         except TypeError as e:
             print e
-        '''
+        for recievedVerb  in recievedTree.subtrees(filter=lambda x: x.label() == "VB" or x.label() == "VBD" or x.label() == "VBG" or x.label() == "VBN" or x.label() == "VBP" or x.label() == "VBZ"):
+            for sentVerb in sentTree.subtrees(filter=lambda x: x.label() == "VB" or x.label() == "VBD" or x.label() == "VBG" or x.label() == "VBN" or x.label() == "VBP" or x.label() == "VBZ"):
+                print recievedVerb
+                print sentVerb
+                print "########################################################"
+
