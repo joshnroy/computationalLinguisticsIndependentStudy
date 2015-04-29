@@ -8,7 +8,7 @@ from time import sleep
 from nltk.util import ngrams
 
 # Variables
-FBTOKEN="CAAGm0PX4ZCpsBAHsYNEg1S71ayipuKPVhjpTubCn9P8KD593fnEZBzfLlGx5riVcHDrah64pYyBeUq848V4i79yBLNUw3ItRtG1CD4OzlNE3ZB1xLfx78MUnF4ng7eLZAkiNMVZBr9RmQCTUYrd4TgCTIaq72G0s1ue6ZB8FJrBl2rMDJ80ZCUvVVhZBtzmdIDFZBbSazZAFoXTjZAAnE3cIfHpU6lnCquE4cIZD"
+FBTOKEN="CAAGm0PX4ZCpsBAHu369vq5tP9mYvNNENoYD3edfoxqYO8yGz7JMiMQnG6qe7lLj7pzZB3gUGWZCdB5vFSK3g5eEuQAf3NZApHsQBtWUP31dXzcVca0RN48X1ZCxkjKJbU0jp7OyltlqmmRd3ec6S2BbOtHULzn9ipYzoPIxWoB7K9BZApTsZBg7EzkthQZCiZC8OrRUku5ESg0mPmETZCiLYRG3A6cZCZC00qOoZD"
 FBID="100009426311666"
 LAT = "42.312449"
 LON = "-71.035905"
@@ -30,9 +30,15 @@ openingMessages = db['openingMessages']
 
 pronounResponses = db['pronounResponses']
 
+verbPairs = db['verbPairs']
+
+# The important collections
+
+unigramPairs = db['unigramPairs']
+
 bigramPairs = db['bigramPairs']
 
-verbPairs = db['verbPairs']
+trigramPairs = db['trigramPairs']
 
 # Setting up the processing stuff
 parser = Parser()
@@ -109,14 +115,14 @@ def learnFromMessages(newMessages, sentMessages, startMessages):
 
 # THE ACTUAL PROGRAM
 # while True:
-sentReplies = []
-sentStarts = []
-newMatches = checkForNewMatches(token)
-sentStarts = startMessages(newMatches, token)
-newMessages = checkForNewMessages(token)
-if newMessages:
+if False:
+    sentReplies = []
+    sentStarts = []
+    newMatches = checkForNewMatches(token)
+    sentStarts = startMessages(newMatches, token)
+    newMessages = checkForNewMessages(token)
     learnFromMessages(newMessages, sentReplies, sentStarts)
-sentReplies = replyToMessages(newMessages, token)
+    sentReplies = replyToMessages(newMessages, token)
 #    sleep(30)
 
 
@@ -138,18 +144,36 @@ if False:
                 messagePair = {}
 
 # The learning part
-if False:
+if True:
     for messagePair in messagesAndResponses.find():
-        if True:
-            recievedBigrams = ngrams(nltk.word_tokenize(messagePair['Recieved']), 2)
-            sentBigrams = ngrams(nltk.word_tokenize(messagePair['Sent']), 2)
-            for recievedBigram in recievedBigrams:
-                for sentBigram in sentBigrams:
-                    if bigramPairs.find({"recieved": recievedBigram, "sent": sentBigram}).count() != 0:
-                        pairToUpdate = bigramPairs.find_one({"recieved": recievedBigram, "sent": sentBigram})
-                        bigramPairs.update({"recieved": recievedBigram, "sent": sentBigram}, {"rating": pairToUpdate['rating'] + 1})
-                    else:
-                        bigramPairs.insert({"recieved": recievedBigram, "sent": sentBigram, "rating": 1})
+# Learn the unigram associations
+        print 'Unigramming : \t' + messagePair['Sent']
+        sentUnigrams = ngrams(nltk.word_tokenize(messagePair['Sent']), 1)
+        for sentUnigram in sentUnigrams:
+            if unigramPairs.find({"recieved": messagePair['Recieved'], "sent": sentUnigram}).count() != 0:
+                pairToUpdate = unigramPairs.find_one({"recieved": messagePair['Recieved'], "sent": sentUnigram})
+                unigramPairs.update({"recieved": messagePair['Recieved'], "sent": sentUnigram}, {"rating": pairToUpdate['rating'] + 1})
+            else:
+                unigramPairs.insert({"recieved": messagePair['Recieved'], "sent": sentUnigram, "rating": 1})
+# Learn the bigram associations
+        print 'Bigramming : \t' + messagePair['Sent']
+        sentBigrams = ngrams(nltk.word_tokenize(messagePair['Sent']), 2)
+        for sentBigram in sentBigrams:
+            if bigramPairs.find({"recieved": messagePair['Recieved'], "sent": sentBigram}).count() != 0:
+                pairToUpdate = bigramPairs.find_one({"recieved": messagePair['Recieved'], "sent": sentBigram})
+                bigramPairs.update({"recieved": messagePair['Recieved'], "sent": sentBigram}, {"rating": pairToUpdate['rating'] + 1})
+            else:
+                bigramPairs.insert({"recieved": messagePair['Recieved'], "sent": sentBigram, "rating": 1})
+# Learn the trigram associations
+        print 'Trigramming : \t' + messagePair['Sent']
+        sentTrigrams = ngrams(nltk.word_tokenize(messagePair['Sent']), 3)
+        for sentTrigram in sentTrigrams:
+            if trigramPairs.find({"recieved": messagePair['Recieved'], "sent": sentTrigram}).count() != 0:
+                pairToUpdate = trigramPairs.find_one({"recieved": messagePair['Recieved'], "sent": sentTrigram})
+                trigramPairs.update({"recieved": messagePair['Recieved'], "sent": sentTrigram}, {"rating": pairToUpdate['rating'] + 1})
+            else:
+                trigramPairs.insert({"recieved": messagePair['Recieved'], "sent": sentTrigram, "rating": 1})
+'''
         try:
             recievedTree = parser.parse(messagePair['Recieved'])
         except TypeError as e:
@@ -165,3 +189,4 @@ if False:
                     verbPairs.update({"recieved": recievedVerb, "sent": sentVerb}, {"rating": verbPair['rating'] + 1})
                 else:
                     verbPairs.insert({"recieved": recievedVerb, "sent": sentVerb, "rating": 1})
+'''
