@@ -8,7 +8,7 @@ from time import sleep
 from nltk.util import ngrams
 
 # Variables
-FBTOKEN="CAAGm0PX4ZCpsBAEYO6ROYZCEV1d94VL0Ng9M7BzdlcMT4dYsVuMWYtYqP56ZC7MQ2TaUqOunRIbZBDnWEsLlulkNsaD4P2ogA7Xqc8HA2hDUFQJQDCn42Bdv1vdJDAaAoa6MhB0AgigVfIGb7UR7pwTJkjFPigQKHt9yBjS33MLgzEhVqs7gfzUylcZC7GyVhUMXKUYmUu2XZAGSHVOdRKr6caqf4Dmr4ZD"
+FBTOKEN="CAAGm0PX4ZCpsBAG7JHNWZBXT6L0sEhPBlrlEro11axn8C5iVRP92I90ZCsw0vJ6ycI9f389TFuG0ALCz177GDjBqOTpCbcZACeuP73lnfLTzEFfjhtXVvaaJnSYHvWlkTpCZBSCHt7ko30YAMiZAwgD8ZAZBOkI9BQPzpzA0ZBfGNPqqvwJSx5nEQIquidZCEN7eazGRNljxkAg1r5XZCRN6CMn8XnhgZBf2tyQZD"
 FBID="100009426311666"
 LAT = "42.312449"
 LON = "-71.035905"
@@ -59,7 +59,7 @@ def checkForNewMessages(token):
                 fromMessages.reverse()
                 recievedMessage = {'recieved': message['message'],
                         'sent': fromMessages[0]['message'],
-                        'from': message['from']}
+                        'from': message['match_id']}
                 recievedMessages.append(recievedMessage)
     print "Got new messages"
     return recievedMessages
@@ -120,18 +120,25 @@ def replyToMessages(messages, token):
                     possibleResponses.append([trigramPair['recieved'], 1])
 
         possibleResponses.sort(key=lambda x: int(x[1]), reverse=True)
-        try:
+        lastMessageTo = ""
+        if message['from'] == lastMessageTo:
+            pass
+        else:
             try:
                 try:
-                    sendMessage(message['from'], possibleResponses[0][0], token)
-                    sentMessages.append({"recieved": message['message'], "sent": possibleResponses[0][0]})
-                    sleep(1)
-                except UnicodeEncodeError as f:
-                    print f
-            except urllib2.HTTPError as e:
-                print e
-        except IndexError:
-            print "Ignoring this message chain"
+                    try:
+#                    sendMessage(message['from'], possibleResponses[0][0], token)
+                        print "Sent to: \t" + message['from'] + "\t sentMessage: \t" + possibleResponses[0][0] + "\t recievedMessage: \t" + message['recieved']
+                        sentMessages.append({"recieved": message['recieved'], "sent": possibleResponses[0][0], "to": message['from']})
+                        sleep(1)
+                    except UnicodeEncodeError as f:
+                        print f
+                except urllib2.HTTPError as e:
+                    print e
+            except IndexError:
+                print "Ignoring this message chain"
+            lastMessageTo = message['from']
+            print "Setting lastMessageTo: \t" + message['from']
     return sentMessages
 
 
@@ -159,6 +166,7 @@ def startMessages(matches, token):
     sentMessages = []
     for match in matches:
         messageToSend = openingMessages.find().limit(-1).skip(random.randint(0, openingMessages.count() - 1)).next()
+        print match + "\t match"
         sendMessage(match, messageToSend['Sent'], token)
         sentMessages.append({"to": match, "message": messageToSend['Sent']})
     print("Sent messages to all new matches")
