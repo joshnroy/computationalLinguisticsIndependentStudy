@@ -113,8 +113,12 @@ def replyToMessages(messages, token):
                     possibleResponses.append([trigramPair['recieved'], 1])
 
         possibleResponses.sort(key=lambda x: int(x[1]), reverse=True)
-        pprint(possibleResponses)
-        print "######################"
+        try:
+            sendMessage(message['from'], possibleResponses[0][0], token)
+            sentMessages[message['from']] = {"recieved": message['message'], "sent": possibleResponses[0][0]}
+        except IndexError:
+            print "Ignoring this message chain"
+        print "#########################"
     return sentMessages
 
 
