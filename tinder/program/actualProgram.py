@@ -112,6 +112,7 @@ def replyToMessages(messages, token):
                 else:
                     possibleResponses.append([trigramPair['recieved'], 1])
 
+        possibleResponses.sort(key=lambda x: int(x[1]), reverse=True)
         pprint(possibleResponses)
         print "######################"
     return sentMessages
