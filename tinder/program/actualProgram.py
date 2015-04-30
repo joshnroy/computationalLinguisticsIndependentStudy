@@ -61,6 +61,7 @@ def checkForNewMessages(token):
                         'sent': fromMessages[0]['message'],
                         'from': message['match_id']}
                 recievedMessages.append(recievedMessage)
+                break
     print "Got new messages"
     return recievedMessages
 
@@ -120,25 +121,19 @@ def replyToMessages(messages, token):
                     possibleResponses.append([trigramPair['recieved'], 1])
 
         possibleResponses.sort(key=lambda x: int(x[1]), reverse=True)
-        lastMessageTo = ""
-        if message['from'] == lastMessageTo:
-            pass
-        else:
+        try:
             try:
                 try:
-                    try:
 #                    sendMessage(message['from'], possibleResponses[0][0], token)
-                        print "Sent to: \t" + message['from'] + "\t sentMessage: \t" + possibleResponses[0][0] + "\t recievedMessage: \t" + message['recieved']
-                        sentMessages.append({"recieved": message['recieved'], "sent": possibleResponses[0][0], "to": message['from']})
-                        sleep(1)
-                    except UnicodeEncodeError as f:
-                        print f
-                except urllib2.HTTPError as e:
-                    print e
-            except IndexError:
-                print "Ignoring this message chain"
-            lastMessageTo = message['from']
-            print "Setting lastMessageTo: \t" + message['from']
+                    print "Sent to: \t" + message['from'] + "\t sentMessage: \t" + possibleResponses[0][0] + "\t recievedMessage: \t" + message['recieved']
+                    sentMessages.append({"recieved": message['recieved'], "sent": possibleResponses[0][0], "to": message['from']})
+                    sleep(1)
+                except UnicodeEncodeError as f:
+                    print f
+            except urllib2.HTTPError as e:
+                print e
+        except IndexError as g:
+            print g
     return sentMessages
 
 
