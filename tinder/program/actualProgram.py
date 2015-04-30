@@ -52,13 +52,18 @@ def checkForNewMessages(token):
         messages = match['messages']
         for message in messages:
             if message['to'] == '552d6a6275a887851e60ab54':
-                recievedMessage = {'from': message['from'],
-                        'message': message['message']}
+                fromMessages = list(messages)
+                for fromMessage in fromMessages:
+                    if fromMessages.index(fromMessage) >= messages.index(message):
+                        fromMessages.remove(fromMessage)
+                fromMessages.reverse()
+                recievedMessage = {'recieved': message['message'],
+                        'sent': fromMessages[0]['message']}
                 recievedMessages.append(recievedMessage)
     return recievedMessages
 
 def replyToMessages(messages, token):
-    sentMessages = {}
+    sentMessages = []
     for message in messages:
         possibleResponses = []
 
@@ -115,7 +120,8 @@ def replyToMessages(messages, token):
         possibleResponses.sort(key=lambda x: int(x[1]), reverse=True)
         try:
             sendMessage(message['from'], possibleResponses[0][0], token)
-            sentMessages[message['from']] = {"recieved": message['message'], "sent": possibleResponses[0][0]}
+            sentMessages.append({"recieved": message['message'], "sent": possibleResponses[0][0]})
+            sleep(1)
         except IndexError:
             print "Ignoring this message chain"
     return sentMessages
@@ -149,19 +155,52 @@ def startMessages(matches, token):
     print("Sent messages to all new matches")
     return sentMessages
 
-def learnFromMessages(newMessages, sentMessages, startMessages):
+def learnFromMessages(newMessages):
     pass
+
+
+def learningAlgorithm(messagePairs):
+    for messagePair in messagePairs:
+
+# Learn the unigram associations
+        sentUnigrams = ngrams(nltk.word_tokenize(messagePair['sent']), 1)
+        for sentUnigram in sentUnigrams:
+            if unigramPairs.find({"recieved": messagePair['recieved'], "sent": sentUnigram}).count() != 0:
+                pairToUpdate = unigramPairs.find_one({"recieved": messagePair['recieved'], "sent": sentUnigram})
+                unigramPairs.update({"recieved": messagePair['recieved'], "sent": sentUnigram}, {"rating": pairToUpdate['rating'] + 1})
+            else:
+                unigramPairs.insert({"recieved": messagePair['recieved'], "sent": sentUnigram, "rating": 1})
+
+# Learn the bigram associations
+        sentBigrams = ngrams(nltk.word_tokenize(messagePair['sent']), 2)
+        for sentBigram in sentBigrams:
+            if bigramPairs.find({"recieved": messagePair['recieved'], "sent": sentBigram}).count() != 0:
+                pairToUpdate = bigramPairs.find_one({"recieved": messagePair['recieved'], "sent": sentBigram})
+                bigramPairs.update({"recieved": messagePair['recieved'], "sent": sentBigram}, {"rating": pairToUpdate['rating'] + 1})
+            else:
+                bigramPairs.insert({"recieved": messagePair['recieved'], "sent": sentBigram, "rating": 1})
+
+# Learn the trigram associations
+        sentTrigrams = ngrams(nltk.word_tokenize(messagePair['sent']), 3)
+        for sentTrigram in sentTrigrams:
+            if trigramPairs.find({"recieved": messagePair['recieved'], "sent": sentTrigram}).count() != 0:
+                pairToUpdate = trigramPairs.find_one({"recieved": messagePair['recieved'], "sent": sentTrigram})
+                trigramPairs.update({"recieved": messagePair['recieved'], "sent": sentTrigram}, {"rating": pairToUpdate['rating'] + 1})
+            else:
+                trigramPairs.insert({"recieved": messagePair['recieved'], "sent": sentTrigram, "rating": 1})
+
+
+
 
 # THE ACTUAL PROGRAM
 # while True:
 if True:
-    sentReplies = []
-    sentStarts = []
     newMatches = checkForNewMatches(token)
-    sentStarts = startMessages(newMatches, token)
+#    startMessages(newMatches, token)
     newMessages = checkForNewMessages(token)
-    learnFromMessages(newMessages, sentReplies, sentStarts)
-    sentReplies = replyToMessages(newMessages, token)
+    pprint(newMessages)
+    learnFromMessages(newMessages)
+#    sentReplies = replyToMessages(newMessages, token)
 #    sleep(30)
 
 
