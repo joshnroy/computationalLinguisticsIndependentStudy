@@ -8,7 +8,7 @@ from time import sleep
 from nltk.util import ngrams
 
 # Variables
-FBTOKEN="CAAGm0PX4ZCpsBAHu369vq5tP9mYvNNENoYD3edfoxqYO8yGz7JMiMQnG6qe7lLj7pzZB3gUGWZCdB5vFSK3g5eEuQAf3NZApHsQBtWUP31dXzcVca0RN48X1ZCxkjKJbU0jp7OyltlqmmRd3ec6S2BbOtHULzn9ipYzoPIxWoB7K9BZApTsZBg7EzkthQZCiZC8OrRUku5ESg0mPmETZCiLYRG3A6cZCZC00qOoZD"
+FBTOKEN="CAAGm0PX4ZCpsBADZCZBZCHaue1CZBsaJFaz1sxQZBtEIyFaF8yN65mFa8KIiZAdvBga5UslOCyPkeXSggNghEtTkCOtDaA1bqUeTM484vnbdEoEY2C3gK0XUZBWDOd9LZBp8o3LAeGac77B8dNB1fxGnmVyMRpCLOc1ff8GeZCLIHPYzSHgUMZCoJShG4SzHWXH44io6SynZCaQ4YDyxhh5DUsZA84b5OhZC5IFZCoZD"
 FBID="100009426311666"
 LAT = "42.312449"
 LON = "-71.035905"
@@ -58,29 +58,62 @@ def checkForNewMessages(token):
     return recievedMessages
 
 def replyToMessages(messages, token):
-    sentMessages = []
+    possibleResponses = []
+    sentMessages = {}
     for message in messages:
-        messageToSend = ""
-        possibleBigrams = {}
-        possibleMessages = messagesAndResponses.find({"message": message['message']})
-        if possibleMessages.count() == 0:
-            recievedBigrams = ngrams(nltk.word_tokenize(message['message']), 2)
-            for bigram in recievedBigrams:
-                possibleSentBigrams = bigramPairs.find({"recieved": bigram}).sort([("rating", -1)])
-                for bigram in possibleSentBigrams:
-                    if bigram[str(bigram['sent'])] in possibleBigrams:
-                        print possibleBigrams[bigram[str(bigram['sent'])]]['rating']
-                    else:
-                        possibleBigrams[bigram['sent'][0] + bigram['sent'][1]] = bigram['sent']
-        elif possibleMessages.count() == 1:
-            messageToSend = possibleMessages
-        else:
-            messageToSend = possibleMessages.find().limit(-1).skip(random.randint(0, possibleMessages.count() - 1)).next()
 
-#        sendMessage(message['from'], messageToSend, token)
-#        sentMessages.append({"to": message['from'], "message": messageToSend})
+# Split recieved message into ngrams
+        recievedUnigrams = ngrams(nltk.word_tokenize(message['message']), 1)
+        recievedBigrams = ngrams(nltk.word_tokenize(message['message']), 2)
+        recievedTrigrams = ngrams(nltk.word_tokenize(message['message']), 3)
+
+# unigram
+        for unigram in recievedUnigrams:
+#            print unigram
+            for unigramPair in unigramPairs.find({"sent": unigram}):
+                if possibleResponses:
+                    index = -1
+                    for response in possibleResponses:
+                        if response[0] == unigramPair['recieved']:
+                            index = possibleResponses.index(response)
+                    if index != -1:
+                        possibleResponses[index][1] += 1
+                    else:
+                        possibleResponses.append([unigramPair['recieved'], 1])
+                else:
+                    possibleResponses.append([unigramPair['recieved'], 1])
     print("Replied to all messages")
     return sentMessages
+'''
+# bigram
+        for bigram in recievedBigrams:
+            if bigramPairs.find({"sent": bigram}):
+                for bigramPair in bigramPairs.find({"sent": bigram}):
+                    if possibleResponses:
+                        for response in possibleResponses:
+                            pprint(response)
+                            for elements in response:
+                                if bigramPair['recieved'] in elements:
+                                    response[1] += 1
+            else:
+                possibleResponses.append([bigramPair['recieved'], 0])
+                print "appened"
+# trigram
+        for trigram in recievedTrigrams:
+            if trigramPairs.find({"sent": trigram}):
+                for trigramPair in trigramPairs.find({"sent": trigram}):
+                    if possibleResponses:
+                        for response in possibleResponses:
+                            pprint(response)
+                            for elements in response:
+                                if trigramPair['recieved'] in elements:
+                                    response[1] += 1
+            else:
+                possibleResponses.append([trigramPair['recieved'], 0])
+                print "appened"
+                '''
+
+
 
 def getMatches(token):
     update = postForm("updates", "", token)
@@ -115,7 +148,7 @@ def learnFromMessages(newMessages, sentMessages, startMessages):
 
 # THE ACTUAL PROGRAM
 # while True:
-if False:
+if True:
     sentReplies = []
     sentStarts = []
     newMatches = checkForNewMatches(token)
@@ -144,7 +177,7 @@ if False:
                 messagePair = {}
 
 # The learning part
-if True:
+if False:
     for messagePair in messagesAndResponses.find():
 # Learn the unigram associations
         print 'Unigramming : \t' + messagePair['Sent']
