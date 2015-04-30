@@ -1,4 +1,4 @@
-import pymongo, nltk, sys, os, stat_parser, random
+import pymongo, nltk, sys, os, stat_parser, random, urllib2
 from pymongo import MongoClient
 from stat_parser import Parser, display_tree
 from nltk.tree import *
@@ -8,7 +8,7 @@ from time import sleep
 from nltk.util import ngrams
 
 # Variables
-FBTOKEN="CAAGm0PX4ZCpsBADZCZBZCHaue1CZBsaJFaz1sxQZBtEIyFaF8yN65mFa8KIiZAdvBga5UslOCyPkeXSggNghEtTkCOtDaA1bqUeTM484vnbdEoEY2C3gK0XUZBWDOd9LZBp8o3LAeGac77B8dNB1fxGnmVyMRpCLOc1ff8GeZCLIHPYzSHgUMZCoJShG4SzHWXH44io6SynZCaQ4YDyxhh5DUsZA84b5OhZC5IFZCoZD"
+FBTOKEN="CAAGm0PX4ZCpsBAEYO6ROYZCEV1d94VL0Ng9M7BzdlcMT4dYsVuMWYtYqP56ZC7MQ2TaUqOunRIbZBDnWEsLlulkNsaD4P2ogA7Xqc8HA2hDUFQJQDCn42Bdv1vdJDAaAoa6MhB0AgigVfIGb7UR7pwTJkjFPigQKHt9yBjS33MLgzEhVqs7gfzUylcZC7GyVhUMXKUYmUu2XZAGSHVOdRKr6caqf4Dmr4ZD"
 FBID="100009426311666"
 LAT = "42.312449"
 LON = "-71.035905"
@@ -58,7 +58,8 @@ def checkForNewMessages(token):
                         fromMessages.remove(fromMessage)
                 fromMessages.reverse()
                 recievedMessage = {'recieved': message['message'],
-                        'sent': fromMessages[0]['message']}
+                        'sent': fromMessages[0]['message'],
+                        'from': message['from']}
                 recievedMessages.append(recievedMessage)
     print "Got new messages"
     return recievedMessages
@@ -69,9 +70,9 @@ def replyToMessages(messages, token):
         possibleResponses = []
 
 # Split recieved message into ngrams
-        recievedUnigrams = ngrams(nltk.word_tokenize(message['message']), 1)
-        recievedBigrams = ngrams(nltk.word_tokenize(message['message']), 2)
-        recievedTrigrams = ngrams(nltk.word_tokenize(message['message']), 3)
+        recievedUnigrams = ngrams(nltk.word_tokenize(message['recieved']), 1)
+        recievedBigrams = ngrams(nltk.word_tokenize(message['recieved']), 2)
+        recievedTrigrams = ngrams(nltk.word_tokenize(message['recieved']), 3)
 
 # unigram
         for unigram in recievedUnigrams:
@@ -120,9 +121,15 @@ def replyToMessages(messages, token):
 
         possibleResponses.sort(key=lambda x: int(x[1]), reverse=True)
         try:
-            sendMessage(message['from'], possibleResponses[0][0], token)
-            sentMessages.append({"recieved": message['message'], "sent": possibleResponses[0][0]})
-            sleep(1)
+            try:
+                try:
+                    sendMessage(message['from'], possibleResponses[0][0], token)
+                    sentMessages.append({"recieved": message['message'], "sent": possibleResponses[0][0]})
+                    sleep(1)
+                except UnicodeEncodeError as f:
+                    print f
+            except urllib2.HTTPError as e:
+                print e
         except IndexError:
             print "Ignoring this message chain"
     return sentMessages
@@ -202,8 +209,8 @@ if True:
     startMessages(newMatches, token)
     newMessages = checkForNewMessages(token)
     learnFromMessages(newMessages)
-#    sentReplies = replyToMessages(newMessages, token)
-#    sleep(30)
+    sentReplies = replyToMessages(newMessages, token)
+#    sleep(random.randint(1, 120))
 
 
 # THE sending messages to database program
