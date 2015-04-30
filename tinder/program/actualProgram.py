@@ -58,9 +58,9 @@ def checkForNewMessages(token):
     return recievedMessages
 
 def replyToMessages(messages, token):
-    possibleResponses = []
     sentMessages = {}
     for message in messages:
+        possibleResponses = []
 
 # Split recieved message into ngrams
         recievedUnigrams = ngrams(nltk.word_tokenize(message['message']), 1)
@@ -69,7 +69,6 @@ def replyToMessages(messages, token):
 
 # unigram
         for unigram in recievedUnigrams:
-#            print unigram
             for unigramPair in unigramPairs.find({"sent": unigram}):
                 if possibleResponses:
                     index = -1
@@ -82,37 +81,40 @@ def replyToMessages(messages, token):
                         possibleResponses.append([unigramPair['recieved'], 1])
                 else:
                     possibleResponses.append([unigramPair['recieved'], 1])
-    print("Replied to all messages")
-    return sentMessages
-'''
+
 # bigram
         for bigram in recievedBigrams:
-            if bigramPairs.find({"sent": bigram}):
-                for bigramPair in bigramPairs.find({"sent": bigram}):
-                    if possibleResponses:
-                        for response in possibleResponses:
-                            pprint(response)
-                            for elements in response:
-                                if bigramPair['recieved'] in elements:
-                                    response[1] += 1
-            else:
-                possibleResponses.append([bigramPair['recieved'], 0])
-                print "appened"
+            for bigramPair in bigramPairs.find({"sent": bigram}):
+                if possibleResponses:
+                    index = -1
+                    for response in possibleResponses:
+                        if response[0] == bigramPair['recieved']:
+                            index = possibleResponses.index(response)
+                    if index != -1:
+                        possibleResponses[index][1] += 1
+                    else:
+                        possibleResponses.append([bigramPair['recieved'], 1])
+                else:
+                    possibleResponses.append([bigramPair['recieved'], 1])
+
 # trigram
         for trigram in recievedTrigrams:
-            if trigramPairs.find({"sent": trigram}):
-                for trigramPair in trigramPairs.find({"sent": trigram}):
-                    if possibleResponses:
-                        for response in possibleResponses:
-                            pprint(response)
-                            for elements in response:
-                                if trigramPair['recieved'] in elements:
-                                    response[1] += 1
-            else:
-                possibleResponses.append([trigramPair['recieved'], 0])
-                print "appened"
-                '''
+            for trigramPair in trigramPairs.find({"sent": trigram}):
+                if possibleResponses:
+                    index = -1
+                    for response in possibleResponses:
+                        if response[0] == trigramPair['recieved']:
+                            index = possibleResponses.index(response)
+                    if index != -1:
+                        possibleResponses[index][1] += 1
+                    else:
+                        possibleResponses.append([trigramPair['recieved'], 1])
+                else:
+                    possibleResponses.append([trigramPair['recieved'], 1])
 
+        pprint(possibleResponses)
+        print "######################"
+    return sentMessages
 
 
 def getMatches(token):
