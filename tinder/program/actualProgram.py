@@ -125,8 +125,8 @@ def replyToMessages(messages, token):
             try:
                 try:
                     possibleResponses[0][0] = re.sub(r"Mackenzie", r"", possibleResponses[0][0])
-#                    sendMessage(message['from'], possibleResponses[0][0], token)
-                    print "Sent to: \t" + message['from'] + "\t sentMessage: \t" + possibleResponses[0][0] + "\t recievedMessage: \t" + message['recieved']
+                    sendMessage(message['from'], possibleResponses[0][0], token)
+#                    print "Sent to: \t" + message['from'] + "\t sentMessage: \t" + possibleResponses[0][0] + "\t recievedMessage: \t" + message['recieved']
                     sentMessages.append({"recieved": message['recieved'], "sent": possibleResponses[0][0], "to": message['from']})
                     sleep(1)
                 except UnicodeEncodeError as f:
