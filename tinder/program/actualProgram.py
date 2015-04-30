@@ -60,6 +60,7 @@ def checkForNewMessages(token):
                 recievedMessage = {'recieved': message['message'],
                         'sent': fromMessages[0]['message']}
                 recievedMessages.append(recievedMessage)
+    print "Got new messages"
     return recievedMessages
 
 def replyToMessages(messages, token):
@@ -144,6 +145,7 @@ def checkForNewMatches(token):
         elif len(messages) == 1:
             newMatches.append(match['_id'])
             openingMessages.insert({"sent": messages[0]['message'].replace('Mackenzie', '')})
+    print "Got new matches"
     return newMatches
 
 def startMessages(matches, token):
@@ -156,7 +158,8 @@ def startMessages(matches, token):
     return sentMessages
 
 def learnFromMessages(newMessages):
-    pass
+    learningAlgorithm(newMessages)
+    print "Learned from messages"
 
 
 def learningAlgorithm(messagePairs):
@@ -196,9 +199,8 @@ def learningAlgorithm(messagePairs):
 # while True:
 if True:
     newMatches = checkForNewMatches(token)
-#    startMessages(newMatches, token)
+    startMessages(newMatches, token)
     newMessages = checkForNewMessages(token)
-    pprint(newMessages)
     learnFromMessages(newMessages)
 #    sentReplies = replyToMessages(newMessages, token)
 #    sleep(30)
