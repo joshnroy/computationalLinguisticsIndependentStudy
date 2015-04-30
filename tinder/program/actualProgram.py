@@ -118,7 +118,6 @@ def replyToMessages(messages, token):
             sentMessages[message['from']] = {"recieved": message['message'], "sent": possibleResponses[0][0]}
         except IndexError:
             print "Ignoring this message chain"
-        print "#########################"
     return sentMessages
 
 
