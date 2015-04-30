@@ -8,7 +8,7 @@ from time import sleep
 from nltk.util import ngrams
 
 # Variables
-FBTOKEN="CAAGm0PX4ZCpsBAG7JHNWZBXT6L0sEhPBlrlEro11axn8C5iVRP92I90ZCsw0vJ6ycI9f389TFuG0ALCz177GDjBqOTpCbcZACeuP73lnfLTzEFfjhtXVvaaJnSYHvWlkTpCZBSCHt7ko30YAMiZAwgD8ZAZBOkI9BQPzpzA0ZBfGNPqqvwJSx5nEQIquidZCEN7eazGRNljxkAg1r5XZCRN6CMn8XnhgZBf2tyQZD"
+FBTOKEN="CAAGm0PX4ZCpsBAGdFwyubezTGT1oJDPyGpG1zOxh4Gj13bBv5TxcpLCPZBLSZAYZCZCX1SBam76wZAZAYdlBQa9AZBP2rmDGI8ZCKw7p1uvgtyAMxFE0brGY98F4LBwDctthsJvamHbQOFWMtI0PhG70ugbWtFHNf85lf4RnXgvaIcSl2ovh3EyJXy2ZBFrmOT4A3LyM1qzEYkWnHAVoRBSGDNtSwIEWVluL0ZD"
 FBID="100009426311666"
 LAT = "42.312449"
 LON = "-71.035905"
@@ -57,11 +57,14 @@ def checkForNewMessages(token):
                     if fromMessages.index(fromMessage) >= messages.index(message):
                         fromMessages.remove(fromMessage)
                 fromMessages.reverse()
-                recievedMessage = {'recieved': message['message'],
-                        'sent': fromMessages[0]['message'],
-                        'from': message['match_id']}
-                recievedMessages.append(recievedMessage)
-                break
+                if fromMessages[0]['from'] == '552d6a6275a887851e60ab54':
+                    print "the last message was from me"
+                elif fromMessages[0]['to'] == '552d6a6275a887851e60ab54':
+                    recievedMessage = {'recieved': message['message'],
+                            'sent': fromMessages[0]['message'],
+                            'from': message['match_id']}
+                    recievedMessages.append(recievedMessage)
+                    break
     print "Got new messages"
     return recievedMessages
 
@@ -162,7 +165,7 @@ def startMessages(matches, token):
     sentMessages = []
     for match in matches:
         messageToSend = openingMessages.find().limit(-1).skip(random.randint(0, openingMessages.count() - 1)).next()
-        print match + "\t match"
+        pprint(messageToSend)
         sendMessage(match, messageToSend['Sent'], token)
         sentMessages.append({"to": match, "message": messageToSend['Sent']})
     print("Sent messages to all new matches")
@@ -209,6 +212,7 @@ def learningAlgorithm(messagePairs):
 # THE ACTUAL PROGRAM
 # while True:
 if True:
+    sentReplies = []
     newMatches = checkForNewMatches(token)
     startMessages(newMatches, token)
     newMessages = checkForNewMessages(token)
